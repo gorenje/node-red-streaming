@@ -1,0 +1,25 @@
+{
+  "archivestream": {
+
+
+    "label": {
+      "format": "Format",
+      "direction": "Direction",
+      "showprogress": "Show progress"
+    },
+
+    "error": {
+      "dirname_not_defined": "Directory destination not specified",
+      "failed_to_create_dir": "Failed to create '__directory__'"
+    },
+
+    "tip": {
+
+    },
+      
+    "status": {
+      "waiting": "Waiting for Godot",
+      "timeout": "No more time to waiting"
+    }
+  }
+}

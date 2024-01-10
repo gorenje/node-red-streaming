@@ -1,0 +1,85 @@
+<script type="text/javascript">
+(function(){
+  
+
+  function frontendSupportFunction() {
+  }
+
+  var functTwo = (arg) => {
+
+  };
+  
+  RED.nodes.registerType('DeCompStream',{
+    color: '#FFF0F0',
+    icon: "font-awesome/fa-compress",
+    category: 'streaming',
+    defaults: {
+      name: {
+        value:"",
+      },
+      direction: {
+        value: "decompress", required:true
+      },
+      format: {
+        value: "gz", required:true
+      },
+    },
+
+    inputs: 1,
+
+    outputs: 1,
+
+    label: function() {
+      return (this.name || this._def.paletteLabel);
+    },
+
+    labelStyle: function() {
+      return this.name?"node_label_italic":"";
+    },
+
+    onpaletteadd: function() {
+    },
+
+    oneditprepare: function() {
+      $("#node-input-direction").val(this.direction)
+      $("#node-input-format").val(this.format)
+    },
+
+    oneditcancel: function() {
+    },
+
+    oneditsave: function() {
+    },
+
+    onpaletteremove: function() {
+    },
+
+
+
+  });
+})();
+</script>
+
+<script type="text/html" data-template-name="DeCompStream">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
+
+    <div class="form-row">
+      <label for="node-input-format"><i class="fa fa-tasks"></i> <span data-i18n="decompstream.label.format"></span></label>
+      <select type="text" id="node-input-format" style="width:70%;">
+                <option value="gz">Gzip</option>
+                <option value="bz2">Bz2</option>
+                <option value="xz">xz</option>
+          </select>
+    </div>
+
+        <div class="form-row">
+          <label for="node-input-direction"><i class="fa fa-tasks"></i> Direction</span></label>
+          <select type="text" id="node-input-direction" style="width:70%;">
+                      <option value="decompress">decompress</option>
+                      <option value="compress">compress</option>
+                </select>
+        </div>
+</script>

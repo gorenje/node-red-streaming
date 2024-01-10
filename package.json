@@ -1,0 +1,51 @@
+{
+  "name" : "@gregoriusrippenstein/node-red-contrib-pipestream",
+  "version": "0.0.41",
+  "dependencies": {
+    "got": "^13",
+    "fs-extra": "^11.2.0",
+    "pako": "^2.1.0",
+    "tar-stream": "^3.1.6",
+    "streamx": "^2.15.5",
+    "lzma-native": "^8.0.6",
+    "file-type": "^18.7.0",
+    "unbzip2-stream": "^1.4.3",
+    "unzipper": "^0.10.14",
+    "fast-csv": "^4.3.6"
+  },
+
+  "description": "Nodes to make streaming possible in Node-RED.",
+  "keywords": [
+    "node-red"
+  ],
+
+  "license": "Don't do evil.",
+  "homepage": "https://github.com/gorenje/ndoe-red-contrib-pipestream#readme",
+  "author": "Gerrit Riessen <gerrit@openmindmap.org>",
+  "engines": {
+    "node": ">=14"
+  },
+
+  "node-red" : {
+    "version": ">=3.0.0",
+    "nodes": {
+       "pipestart": "nodes/pipestart.js",
+       "pipeend": "nodes/pipeend.js",
+       "filestream": "nodes/filestream.js",
+       "httprequest": "nodes/httprequeststream.js",
+       "csvstream": "nodes/csvstream.js",
+       "byline": "nodes/byline.js",
+       "tojson": "nodes/tojson.js",
+       "decompstream": "nodes/decompstream.js",
+       "archivestream": "nodes/archivestream.js"
+    }
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gorenje/ndoe-red-contrib-pipestream.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gorenje/ndoe-red-contrib-pipestream"
+  }
+}

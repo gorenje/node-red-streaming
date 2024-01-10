@@ -1,0 +1,119 @@
+<script type="text/javascript">
+(function(){
+  RED.nodes.registerType('HttpRequestStream',{
+    color: '#e5e4ef',
+    icon: "font-awesome/fa-globe",
+    category: 'streaming',
+    defaults: {
+      name: {
+        value:"",
+      },
+      method: {
+        value: "GET", required:true
+      },
+      urlproperty: {value:"url", required:true},
+      urlpropertyType: {value:"msg"},
+      progress: {
+        value: true
+      },
+      ignhdrs: {
+        value: false
+      },
+      paytoqs: {
+        value: "ignore"
+      },
+    },
+
+    inputs: 1,
+
+    outputs: 1,
+
+    label: function() {
+      return (this.name || this._def.paletteLabel);
+    },
+
+    labelStyle: function() {
+      return this.name?"node_label_italic":"";
+    },
+
+    onpaletteadd: function() {
+    },
+
+    oneditprepare: function() {
+      $("#node-input-urlproperty").typedInput({
+        types: ["msg","json","str"],
+        typeField: "#node-input-urlpropertyType"
+      });
+      $("#node-input-urlproperty").val(this.urlproperty)
+      $("#node-input-urlpropertyType").val(this.urlpropertyType) 
+      $('#node-input-progress').val(this.progress)
+      $('#node-input-ignhdrs').val(this.ignhdrs)
+
+      if (this.paytoqs === true || this.paytoqs == "query") {
+          $("#node-input-paytoqs").val("query");
+      } else if (this.paytoqs === "body") {
+          $("#node-input-paytoqs").val("body");
+      } else {
+          $("#node-input-paytoqs").val("ignore");
+      }
+            
+    },
+
+    oneditcancel: function() {
+    },
+
+    oneditsave: function() {
+    },
+
+    onpaletteremove: function() {
+    },
+
+
+
+  });
+})();
+</script>
+
+<script type="text/html" data-template-name="HttpRequestStream">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-method"><i class="fa fa-tasks"></i> <span data-i18n="httpin.label.method"></span></label>
+    <select type="text" id="node-input-method" style="width:70%;">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+      </select>
+  </div>
+  
+  <div class="form-row">
+    <label for="node-input-urlproperty"><i class="fa fa-tag"></i> Url</label>
+    <input type="text" id="node-input-urlproperty" placeholder="url">
+    <input type="hidden" id="node-input-urlpropertyType"value="msg">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-progress">
+        <span data-i18n="httprequeststream.label.showprogress">
+      </label>
+    <input type="checkbox" id="node-input-progress" style="display:inline-block; width:15px; vertical-align:baseline;">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-ignhdrs">
+          <span data-i18n="httprequeststream.label.ignore_header">
+        </label>
+    <input type="checkbox" id="node-input-ignhdrs" style="display:inline-block; width:15px; vertical-align:baseline;">
+  </div>
+
+  <div class="form-row node-input-paytoqs-row">
+    <label for="node-input-paytoqs"><span data-i18n="node-red:common.label.payload"></span></label>
+    <select id="node-input-paytoqs" style="width: 70%;">
+      <option value="ignore" data-i18n="httprequeststream.label.paytoqs.ignore"></option>
+      <option value="query" data-i18n="httprequeststream.label.paytoqs.query"></option>
+      <option value="body" data-i18n="httprequeststream.label.paytoqs.body"></option>
+    </select>
+  </div>
+</script>

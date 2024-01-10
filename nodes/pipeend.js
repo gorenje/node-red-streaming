@@ -1,0 +1,56 @@
+module.exports = async function(RED) {
+
+  const { pipeline } = await import('node:stream/promises')
+  
+  function CorePipeEndFunctionality(config) {
+    RED.nodes.createNode(this,config);
+
+    var node = this;
+    var cfg = config;
+
+    node.on('close', function() {
+      node.status({});
+    });
+
+    /* msg handler, in this case pass the message on unchanged */
+    node.on("input", async function(msg, send, done) {
+        // Send a message and how to handle errors.
+        try {
+            let streams = []
+
+            msg._streamPipeline.forEach( ( ndedef ) => {
+              let nde = RED.nodes.getNode(ndedef.id )
+              streams.push(nde.createStream(ndedef, msg, send, done, node))
+            })
+
+            pipeline(
+              streams
+            ).then( (result) => {
+              let m = RED.util.cloneMessage(msg);
+              m.complete = true
+              m.result = result
+
+              setTimeout(() => { node.status({ fill: "green", shape: "dot", text: "done" }) }, 2000)
+              setTimeout(() => { node.status({}) }, 4000)
+
+              send(m)
+              done()
+            }).catch( (err) => {
+              console.error("pipe end error", err)
+              var m = RED.util.cloneMessage(msg);
+              m.err = err
+              done(m.err.message, m)
+            })
+
+        } catch (err) {
+          // use done if the node won't send anymore messages for the
+          // message it received.
+          msg.error = err
+          done(err.message, msg)
+        }
+    });
+  }
+
+  RED.nodes.registerType("PipeEnd", CorePipeEndFunctionality);
+
+}

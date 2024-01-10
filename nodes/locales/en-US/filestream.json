@@ -1,0 +1,20 @@
+{
+  "FileStream": {
+
+
+    "label": {
+      "showprogress": "Show Progress"
+    },
+
+    "errors": {
+
+    },
+    "tip": {
+
+    },
+    "status": {
+      "waiting": "Waiting for Godot",
+      "timeout": "No more time to waiting"
+    }
+  }
+}

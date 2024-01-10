@@ -1,0 +1,109 @@
+<script type="text/javascript">
+(function(){
+  
+
+  function frontendSupportFunction() {
+  }
+
+  var functTwo = (arg) => {
+
+  };
+  
+  RED.nodes.registerType('ArchiveStream',{
+    color: '#FDF0C2',
+    icon: "font-awesome/fa-archive",
+    category: 'streaming',
+    defaults: {
+      name: {
+        value:"",
+      },
+      direction: {
+        value: "extract", required:true
+      },
+      format: {
+        value: "tar", required:true
+      },
+      dirnameproperty: {value:"dirname", required:true},
+      dirnamepropertyType: {value:"msg"},
+      progress: {
+        value: false
+      },
+    },
+
+    inputs: 1,
+    outputs: 1,
+
+    label: function() {
+      return (this.name || this._def.paletteLabel);
+    },
+
+    labelStyle: function() {
+      return this.name?"node_label_italic":"";
+    },
+
+    onpaletteadd: function() {
+    },
+
+    oneditprepare: function() {
+      $("#node-input-direction").val(this.direction)
+      $("#node-input-format").val(this.format)
+
+      $("#node-input-dirnameproperty").typedInput({
+        types: ["msg", "jsonata", "str"],
+        typeField: "#node-input-dirnamepropertyType"
+      });
+      
+      $("#node-input-dirnameproperty").val(this.dirnameproperty)
+      $("#node-input-dirnamepropertyType").val(this.dirnamepropertyType)
+
+      $('#node-input-progress').val(this.progress)
+    },
+
+    oneditcancel: function() {
+    },
+
+    oneditsave: function() {
+    },
+
+    onpaletteremove: function() {
+    },
+  });
+})();
+</script>
+
+<script type="text/html" data-template-name="ArchiveStream">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-format"><i class="fa fa-tasks"></i> <span data-i18n="archivestream.label.format"></span></label>
+    <select type="text" id="node-input-format" style="width:70%;">
+      <option value="tar">Tar</option>
+      <option value="zip">Zip</option>
+    </select>
+  </div>
+  
+  <div class="form-row">
+    <label for="node-input-direction"><i class="fa fa-tasks"></i> <span data-i18n="archivestream.label.direction"></span></label>
+    <select type="text" id="node-input-direction" style="width:70%;">
+      <option value="extract">extract</option>
+      <option value="compress">compress</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-dirnameproperty"><i class="fa fa-tag"></i> Dirname</label>
+    <input type="text" id="node-input-dirnameproperty" placeholder="dirname">
+    <input type="hidden" id="node-input-dirnamepropertyType"value="msg">
+  </div>
+
+
+  <div class="form-row">
+    <label for="node-input-progress">
+      <span data-i18n="archivestream.label.showprogress">
+    </label>
+    <input type="checkbox" id="node-input-progress" style="display:inline-block; width:15px; vertical-align:baseline;">
+  </div>
+</script>

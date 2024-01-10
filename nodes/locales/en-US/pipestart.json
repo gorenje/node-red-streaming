@@ -1,0 +1,20 @@
+{
+  "PipeStart": {
+
+
+    "label": {
+      "hello": "world"
+    },
+
+    "errors": {
+
+    },
+    "tip": {
+
+    },
+    "status": {
+      "waiting": "Waiting for Godot",
+      "timeout": "No more time to waiting"
+    }
+  }
+}

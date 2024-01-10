@@ -1,0 +1,22 @@
+{
+  "decompstream": {
+
+
+    "label": {
+      "format": "Format"
+    },
+
+    "error": {
+      "unknown_format": "Format '__format__' is not supported",
+      "unknown_direction": "Action '__direction__' is not supported"
+    },
+    
+    "tip": {
+
+    },
+    "status": {
+      "waiting": "Waiting for Godot",
+      "timeout": "No more time to waiting"
+    }
+  }
+}

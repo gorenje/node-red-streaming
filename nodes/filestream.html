@@ -1,0 +1,89 @@
+<script type="text/javascript">
+(function(){
+  RED.nodes.registerType('FileStream',{
+    color: '#e5e4ef',
+    icon: "font-awesome/fa-navicon",
+    category: 'streaming',
+    defaults: {
+      name: {
+        value:"",
+      },
+      filenameproperty: {value:"filename", required:true},
+      filenamepropertyType: {value:"msg"},
+      direction: {
+        value: "read", required:true
+      },
+      progress: {
+        value: true
+      },    
+    },
+
+    inputs: 1,
+    outputs: 1,
+
+    label: function() {
+      return (this.name || this._def.paletteLabel);
+    },
+
+    labelStyle: function() {
+      return this.name?"node_label_italic":"";
+    },
+
+    onpaletteadd: function() {
+    },
+
+    oneditprepare: function() {
+        $("#node-input-filenameproperty").typedInput({
+            types: ["msg", "jsonata", "str"],
+            typeField: "#node-input-filenamepropertyType"
+        });
+
+        $("#node-input-filenameproperty").val(this.filenameproperty)    
+        $("#node-input-filenamepropertyType").val(this.filenamepropertyType)    
+        $("#node-input-direction").val(this.direction)
+        
+        $('#node-input-progress').val(this.progress)
+    },
+
+    oneditcancel: function() {
+    },
+
+    oneditsave: function() {
+    },
+
+    onpaletteremove: function() {
+    },
+
+
+
+  });
+})();
+</script>
+
+<script type="text/html" data-template-name="FileStream">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
+
+    <div class="form-row">
+      <label for="node-input-direction"><i class="fa fa-tasks"></i> Direction</span></label>
+      <select type="text" id="node-input-direction" style="width:70%;">
+              <option value="read">read</option>
+              <option value="write">write</option>
+        </select>
+    </div>
+  
+<div class="form-row">
+  <label for="node-input-filenameproperty"><i class="fa fa-tag"></i> Filename</label>
+  <input type="text" id="node-input-filenameproperty" placeholder="filename">
+  <input type="hidden" id="node-input-filenamepropertyType"value="msg">
+</div>
+
+  <div class="form-row">
+    <label for="node-input-progress">
+        <span data-i18n="filestream.label.showprogress">
+      </label>
+    <input type="checkbox" id="node-input-progress" style="display:inline-block; width:15px; vertical-align:baseline;">
+  </div>
+</script>
