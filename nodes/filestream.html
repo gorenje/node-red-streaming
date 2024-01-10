@@ -1,7 +1,7 @@
 <script type="text/javascript">
 (function(){
   RED.nodes.registerType('FileStream',{
-    color: '#e5e4ef',
+    color: '#D7D7A0',
     icon: "font-awesome/fa-navicon",
     category: 'streaming',
     defaults: {
@@ -67,7 +67,7 @@
   </div>
 
     <div class="form-row">
-      <label for="node-input-direction"><i class="fa fa-tasks"></i> Direction</span></label>
+      <label for="node-input-direction"><i class="fa fa-tasks"></i> <span data-i18n="filestream.label.direction"></span></label>
       <select type="text" id="node-input-direction" style="width:70%;">
               <option value="read">read</option>
               <option value="write">write</option>
@@ -75,14 +75,14 @@
     </div>
   
 <div class="form-row">
-  <label for="node-input-filenameproperty"><i class="fa fa-tag"></i> Filename</label>
+  <label for="node-input-filenameproperty"><i class="fa fa-tag"></i> <span data-i18n="filestream.label.filename"></span></label>
   <input type="text" id="node-input-filenameproperty" placeholder="filename">
   <input type="hidden" id="node-input-filenamepropertyType"value="msg">
 </div>
 
   <div class="form-row">
     <label for="node-input-progress">
-        <span data-i18n="filestream.label.showprogress">
+        <span data-i18n="filestream.label.showprogress"></span>
       </label>
     <input type="checkbox" id="node-input-progress" style="display:inline-block; width:15px; vertical-align:baseline;">
   </div>

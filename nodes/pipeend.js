@@ -14,33 +14,38 @@ module.exports = async function(RED) {
 
     /* msg handler, in this case pass the message on unchanged */
     node.on("input", async function(msg, send, done) {
-        // Send a message and how to handle errors.
         try {
-            let streams = []
+          let streams = []
 
-            msg._streamPipeline.forEach( ( ndedef ) => {
-              let nde = RED.nodes.getNode(ndedef.id )
-              streams.push(nde.createStream(ndedef, msg, send, done, node))
-            })
+          msg._streamPipeline.forEach( ( ndedef ) => {
+            let nde = RED.nodes.getNode(ndedef.id )
+            let strm = nde.createStream(ndedef, msg, send, done, node)
+            if ( !strm ) {
+              msg.source_id = nde.id
+              done( "no stream found for NodeId: " + nde._def.type, msg)
+              return
+            }
+            streams = streams.concat( Array.isArray(strm) ? strm : [strm])
+          })
+          
+          pipeline(
+            streams
+          ).then( (result) => {
+            let m = RED.util.cloneMessage(msg);
+            m.complete = true
+            m.result = result
 
-            pipeline(
-              streams
-            ).then( (result) => {
-              let m = RED.util.cloneMessage(msg);
-              m.complete = true
-              m.result = result
+            setTimeout(() => { node.status({ fill: "green", shape: "dot", text: "done" }) }, 2000)
+            setTimeout(() => { node.status({}) }, 4000)
 
-              setTimeout(() => { node.status({ fill: "green", shape: "dot", text: "done" }) }, 2000)
-              setTimeout(() => { node.status({}) }, 4000)
-
-              send(m)
-              done()
-            }).catch( (err) => {
-              console.error("pipe end error", err)
-              var m = RED.util.cloneMessage(msg);
-              m.err = err
-              done(m.err.message, m)
-            })
+            send(m)
+            done()
+          }).catch( (err) => {
+            console.error("pipe end error", err)
+            var m = RED.util.cloneMessage(msg);
+            m.err = err
+            done(m.err.message, m)
+          })
 
         } catch (err) {
           // use done if the node won't send anymore messages for the

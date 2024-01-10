@@ -49,9 +49,7 @@ module.exports = async function(RED) {
               }
             })
           } catch ( err ) {
-            // use node.error if the node might send subsequent messages
-            node.error("error occurred", { ...msg, error: err })
-            done();
+            done(err.message, { ...msg, error: err })
           }
     });
   }

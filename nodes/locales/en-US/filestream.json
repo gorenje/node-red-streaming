@@ -1,9 +1,11 @@
 {
-  "FileStream": {
+  "filestream": {
 
 
     "label": {
-      "showprogress": "Show Progress"
+      "showprogress": "Show Progress",
+      "filename": "Filename",
+      "direction": "Direction"
     },
 
     "errors": {
