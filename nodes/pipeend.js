@@ -19,7 +19,7 @@ module.exports = async function(RED) {
 
           msg._streamPipeline.forEach( ( ndedef ) => {
             let nde = RED.nodes.getNode(ndedef.id )
-            let strm = nde.createStream(ndedef, msg, send, done, node)
+            let strm = nde.createStream(ndedef, msg, send, done, nde)
             if ( !strm ) {
               msg.source_id = nde.id
               done( "no stream found for NodeId: " + nde._def.type, msg)

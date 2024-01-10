@@ -1,6 +1,6 @@
 {
   "name" : "@gregoriusrippenstein/node-red-contrib-pipestream",
-  "version": "0.0.52",
+  "version": "0.0.53",
   "dependencies": {
     "got": "^13",
     "fs-extra": "^11.2.0",
