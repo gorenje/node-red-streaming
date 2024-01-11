@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.2]
+### Bug fixes
+
+- pipeend node is compatiable with being in a split/join loop
+- requestTimeout handling with HttpRequest node was broken
+- Archive node has file type in lowercase now
+
 ## [0.0.1]
 ### Initial release
 

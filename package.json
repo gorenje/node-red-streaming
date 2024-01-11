@@ -1,6 +1,6 @@
 {
   "name" : "@gregoriusrippenstein/node-red-contrib-pipestream",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "got": "^13",
     "fs-extra": "^11.2.0",
@@ -22,7 +22,7 @@
   ],
 
   "license": "Don't do evil.",
-  "homepage": "https://github.com/gorenje/node-red-contrib-pipestream#readme",
+  "homepage": "https://github.com/gorenje/node-red-streaming#readme",
   "author": "Gerrit Riessen <gerrit@openmindmap.org>",
   "engines": {
     "node": ">=14"
@@ -50,9 +50,9 @@
 
   "repository": {
     "type": "git",
-    "url": "https://github.com/gorenje/node-red-contrib-pipestream.git"
+    "url": "https://github.com/gorenje/node-red-streaming.git"
   },
   "bugs": {
-    "url": "https://github.com/gorenje/node-red-contrib-pipestream"
+    "url": "https://github.com/gorenje/node-red-streaming"
   }
 }
