@@ -1,7 +1,6 @@
 module.exports = async function(RED) {
   const { parse } = await import('@fast-csv/parse')
 
-
   function CoreCsvStreamFunctionality(config) {
     RED.nodes.createNode(this,config);
 

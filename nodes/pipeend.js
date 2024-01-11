@@ -33,7 +33,7 @@ module.exports = async function(RED) {
           ).then( (result) => {
             let m = RED.util.cloneMessage(msg);
             m.complete = true
-            m.result = result
+            m.piperesult = result
 
             setTimeout(() => { node.status({ fill: "green", shape: "dot", text: "done" }) }, 2000)
             setTimeout(() => { node.status({}) }, 4000)

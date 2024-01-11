@@ -1,0 +1,60 @@
+<script type="text/javascript">
+(function(){
+  
+
+  function frontendSupportFunction() {
+  }
+
+  var functTwo = (arg) => {
+
+  };
+  
+  RED.nodes.registerType('LineStream',{
+    color: '#FDD0A2',
+    icon: "font-awesome/fa-reorder",
+    category: 'streaming',
+    defaults: {
+      name: {
+        value:"",
+      },
+    },
+
+    inputs: 1,
+
+    outputs: 1,
+
+    label: function() {
+      return (this.name || this._def.paletteLabel);
+    },
+
+    labelStyle: function() {
+      return this.name?"node_label_italic":"";
+    },
+
+    onpaletteadd: function() {
+    },
+
+    oneditprepare: function() {
+    },
+
+    oneditcancel: function() {
+    },
+
+    oneditsave: function() {
+    },
+
+    onpaletteremove: function() {
+    },
+
+
+
+  });
+})();
+</script>
+
+<script type="text/html" data-template-name="LineStream">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
+</script>
