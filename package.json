@@ -12,7 +12,8 @@
     "unbzip2-stream": "^1.4.3",
     "unzipper": "^0.10.14",
     "fast-csv": "^4.3.6",
-    "iconv-lite": "^0.6.3"
+    "iconv-lite": "^0.6.3",
+    "form-data": "^4.0.0"
   },
 
   "description": "Nodes to make streaming possible in Node-RED.",
