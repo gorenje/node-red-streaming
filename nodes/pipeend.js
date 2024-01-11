@@ -32,7 +32,13 @@ module.exports = async function(RED) {
             streams
           ).then( (result) => {
             let m = RED.util.cloneMessage(msg);
-            m.complete = true
+
+            // if this is used as part of a group of pipes, then don't send
+            // complete rather we assume there is a join collecting messages
+            // together and 'complete' is a flag for a join node.
+            if ( !m.hasOwnProperty("parts") ) {
+              m.complete = true
+            }
             m.piperesult = result
 
             setTimeout(() => { node.status({ fill: "green", shape: "dot", text: "done" }) }, 2000)

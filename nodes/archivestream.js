@@ -29,14 +29,13 @@ module.exports = async function(RED) {
             //const size = entry.vars.uncompressedSize; // There is also compressedSize;
 
             if (entry.type == "File") {
-
               fsex.ensureDirSync(path.dirname(destPath));
 
               entry.pipe(fs.createWriteStream(destPath))
                 .on('finish', () => {
                   let m = RED.util.cloneMessage(msg);
                   m.path = destPath
-                  m.type = entry.type
+                  m.type = (entry.type || "").toLowerCase()
                   m.size = entry.vars.uncompressedSize
                   m.payload = undefined
                   snd(m, false)
@@ -46,7 +45,7 @@ module.exports = async function(RED) {
               fsex.ensureDirSync(destPath);
               let m = RED.util.cloneMessage(msg);
               m.path = destPath
-              m.type = entry.type
+              m.type = (entry.type || "").toLowerCase()
               snd(m, false)
               entry.autodrain();
             }
@@ -64,7 +63,7 @@ module.exports = async function(RED) {
           stream.on('end', () => {
               let m = RED.util.cloneMessage(msg);
               m.path = destPath
-              m.type = header.type
+              m.type = (header.type || "").toLowerCase()
               m.size = header.size
               m.payload = undefined
               snd(m, false)

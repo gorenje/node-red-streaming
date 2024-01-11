@@ -75,7 +75,7 @@ module.exports = async function(RED) {
       reqOpts.timeout = { request: 120000 }
 
       if (RED.settings.httpRequestTimeout) { 
-        reqOpts.timeout.timeout = parseInt(RED.settings.httpRequestTimeout) || 120000; 
+        reqOpts.timeout.request = parseInt(RED.settings.httpRequestTimeout) || 120000; 
       }
 
       if (msg.requestTimeout !== undefined) {
@@ -84,7 +84,7 @@ module.exports = async function(RED) {
         } else if (msg.requestTimeout < 1) {
           node.warn(RED._("node-red:httpin.errors.timeout-isnegative"));
         } else {
-          opts.timeout = { request: msg.requestTimeout };
+          reqOpts.timeout = { request: msg.requestTimeout };
         }
       }
 
