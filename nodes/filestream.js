@@ -11,7 +11,7 @@ module.exports = async function(RED) {
     var node = this;
     var cfg = config;
 
-    node.createStream = (opts, msg, snd, dne, pipeend) => {
+    node.createStream = (opts, msg, snd, dne, stNde) => {
       let progressIndicator = new stream.Transform({
         transform: (chunk, encoding, callback) => {
           callback(null, chunk);
@@ -23,7 +23,7 @@ module.exports = async function(RED) {
         progressIndicator = new stream.Transform({
           transform: (chunk, encoding, callback) => {
             totalBytes += chunk.length;
-            pipeend.status({ fill: "yellow", shape: "ring", text: totalBytes + " bytes" });
+            stNde.status({ fill: "yellow", shape: "ring", text: totalBytes + " bytes" });
             callback(null, chunk);
           }
         })
@@ -46,9 +46,9 @@ module.exports = async function(RED) {
         var writestream = fs.createWriteStream(
           opts.filename
         ).on('open', () => {
-          pipeend.status({ fill: "blue", shape: "ring", text: "started" });
+          stNde.status({ fill: "blue", shape: "ring", text: "started" });
         }).on('close', () => {
-          pipeend.status({ fill: "green", shape: "dot", text: "done: " + writestream.bytesWritten + " bytes" });
+          stNde.status({ fill: "green", shape: "dot", text: "done: " + writestream.bytesWritten + " bytes" });
         })
 
         return [progressIndicator, writestream]

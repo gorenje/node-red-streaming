@@ -39,7 +39,7 @@ module.exports = function(RED) {
     var node = this;
     var cfg = config;
 
-    node.createStream = (opts, msg, snd, dne, pipeend) => {
+    node.createStream = (opts, msg, snd, dne, stNde) => {
       return new ByLine({objectMode: true})
     }
     

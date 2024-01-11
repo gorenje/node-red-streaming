@@ -12,12 +12,12 @@ module.exports = async function(RED) {
     var node = this;
     var cfg = config;
     
-    node.createStream = (opts, msg, snd, dne, pipeend) => {
+    node.createStream = (opts, msg, snd, dne, stNde) => {
 
       let progressIndicator = (path,size) => {};
       if ( cfg.progress ) {
         progressIndicator = (path, size) => {
-          pipeend.status({fill: "yellow", shape: "ring", text: path});
+          stNde.status({fill: "yellow", shape: "ring", text: path});
         }
       }
 

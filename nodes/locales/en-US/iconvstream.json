@@ -1,0 +1,26 @@
+{
+  "iconvstream": {
+
+
+    "label": {
+      "fromenc": "From encoding",
+      "toenc": "To encoding"
+    },
+
+    "placeholder": {
+      "fromenc": "ISO-8859-1",
+      "toenc": "UTF-8"
+    },
+    
+    "errors": {
+
+    },
+    "tip": {
+
+    },
+    "status": {
+      "waiting": "Waiting for Godot",
+      "timeout": "No more time to waiting"
+    }
+  }
+}

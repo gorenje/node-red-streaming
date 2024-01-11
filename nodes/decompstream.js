@@ -15,7 +15,7 @@ module.exports = async function(RED) {
     var node = this;
     var cfg = config;
 
-    node.createStream = (opts, msg, snd, dne, pipeend) => {
+    node.createStream = (opts, msg, snd, dne, stNde) => {
       if ( cfg.direction == "decompress") {
 
         switch (cfg.format) {

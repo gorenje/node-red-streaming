@@ -8,8 +8,15 @@ module.exports = async function(RED) {
     var node = this;
     var cfg = config;
 
-    node.createStream = (ndef, msg, snd, dne, pipeend) => {
-      return parse({headers: true}).on('data', (d) => {
+    node.createStream = (ndef, msg, snd, dne, stNde) => {
+      /* 
+      * See more options see --> https://c2fo.github.io/fast-csv/docs/parsing/options#skiprows 
+      */
+      return parse({
+        headers: cfg.hdrin,
+        delimiter: cfg.sep,
+        ignoreEmpty: !cfg.include_empty_strings,
+      }).on('data', (d) => {
         let m = RED.util.cloneMessage(msg);
         m.payload = d
         snd(m)

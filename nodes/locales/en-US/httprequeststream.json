@@ -3,6 +3,7 @@
     "label": {
       "ignore_header": "Ignore msg.headers",
       "showprogress": "Show Progress",
+      "headers": "Request Headers",
       "paytoqs": {
         "ignore": "Ignore",
         "body": "Post as body",

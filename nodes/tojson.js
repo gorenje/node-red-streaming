@@ -8,7 +8,7 @@ module.exports = function(RED) {
     var node = this;
     var cfg = config;
 
-    node.createStream = (ndef, msg, snd, dne, pipeend) => {
+    node.createStream = (ndef, msg, snd, dne, stNde) => {
       return stream.Transform({
         objectMode: true,
         transform: function (entry, e, cb) {

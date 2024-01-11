@@ -1,6 +1,6 @@
 {
   "name" : "@gregoriusrippenstein/node-red-contrib-pipestream",
-  "version": "0.0.53",
+  "version": "0.0.1",
   "dependencies": {
     "got": "^13",
     "fs-extra": "^11.2.0",
@@ -11,7 +11,8 @@
     "file-type": "^18.7.0",
     "unbzip2-stream": "^1.4.3",
     "unzipper": "^0.10.14",
-    "fast-csv": "^4.3.6"
+    "fast-csv": "^4.3.6",
+    "iconv-lite": "^0.6.3"
   },
 
   "description": "Nodes to make streaming possible in Node-RED.",
@@ -30,14 +31,15 @@
     "version": ">=3.0.0",
     "nodes": {
        "pipestart": "nodes/pipestart.js",
-       "pipeend": "nodes/pipeend.js",
        "filestream": "nodes/filestream.js",
        "httprequest": "nodes/httprequeststream.js",
        "csvstream": "nodes/csvstream.js",
        "byline": "nodes/byline.js",
        "tojson": "nodes/tojson.js",
+       "iconvstream": "nodes/iconvstream.js",
        "decompstream": "nodes/decompstream.js",
-       "archivestream": "nodes/archivestream.js"
+       "archivestream": "nodes/archivestream.js",
+       "pipeend": "nodes/pipeend.js"
     }
   },
 
