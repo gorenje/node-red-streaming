@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.3]
+### Iconification
+
+- added icons to indicate whether streams are going to disk or from disk, extracting or compression.
+
 ## [0.0.2]
 ### Bug fixes
 
