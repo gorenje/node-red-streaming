@@ -18,7 +18,10 @@
 
   "description": "Nodes to make streaming possible in Node-RED.",
   "keywords": [
-    "node-red"
+    "node-red",
+    "streaming",
+    "pipeline",
+    "etl"
   ],
 
   "license": "Don't do evil.",
