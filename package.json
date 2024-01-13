@@ -21,7 +21,8 @@
     "node-red",
     "streaming",
     "pipeline",
-    "etl"
+    "etl",
+    "streamapi"
   ],
 
   "license": "Don't do evil.",
