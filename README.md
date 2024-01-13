@@ -12,7 +12,7 @@ Node-RED uses `msg` objects to pass data between flows. These objects get cloned
 
 [ETL](https://en.wikipedia.org/wiki/Extract%2C_transform%2C_load) pipelines on the other hand, work mostly with large datasets - gigabyte zip files are not unheard of. These datasets are fetched, stored and transformed before the data is passed to a data warehouse or some other data store. Hence ETL pipelines are not a good use-case for Node-RED. 
 
-Added to that, Node-RED assumes data is completely available in memory, i.e., attached to the msg object and passed through flows. Many nodes work with Buffers stored in memory containing kilo-bytes of data.
+Added to that, Node-RED assumes data is completely available in memory, i.e., attached to the msg object and passed through flows. Many nodes work with Buffers stored in memory containing kilobytes of data.
 
 This package attempts to provide a solution to dealing with large datasets within Node-RED. Central to this is providing methods for streaming data into Node-RED as individual msg objects. Large datasets are handled outside of the Node-RED flow mechanism, with only individual messages being sent into Node-RED for further handling. 
 
@@ -60,23 +60,23 @@ To create nodes that can be included in a pipeline setup requires that these nod
 - Include themselves in the [`_streamPipeline` array](https://github.com/gorenje/node-red-streaming/blob/fd161b2632ad081bfd2ab04f9a07b631e63f3f7e/nodes/archivestream.js#L95-L98)
 - Provide a [`createStream`](https://github.com/gorenje/node-red-streaming/blob/fd161b2632ad081bfd2ab04f9a07b631e63f3f7e/nodes/archivestream.js#L15-L79) function for defining streams.
 
-That sounds simple and example of this can be found:
+That sounds simple and examples of this can be found:
 
 - [LineStream](https://github.com/gorenje/node-red-streaming/blob/fd161b2632ad081bfd2ab04f9a07b631e63f3f7e/nodes/linestream.js#L42-L55) and here [LineStream](https://github.com/gorenje/node-red-streaming/blob/fd161b2632ad081bfd2ab04f9a07b631e63f3f7e/nodes/linestream.js#L66-L68)
 - [FileStream](https://github.com/gorenje/node-red-streaming/blob/fd161b2632ad081bfd2ab04f9a07b631e63f3f7e/nodes/filestream.js#L14-L56) and here [FileStream](https://github.com/gorenje/node-red-streaming/blob/fd161b2632ad081bfd2ab04f9a07b631e63f3f7e/nodes/filestream.js#L72-L75)
 - [DeCompStream](https://github.com/gorenje/node-red-streaming/blob/fd161b2632ad081bfd2ab04f9a07b631e63f3f7e/nodes/decompstream.js#L18-L51) and here [DeCompStream](https://github.com/gorenje/node-red-streaming/blob/fd161b2632ad081bfd2ab04f9a07b631e63f3f7e/nodes/decompstream.js#L62-L64)
 
-Any third-party node can implement with this functionality and these nodes can be then be used in conjunction with the existing nodes.
+Any third-party node can implement this functionality and these nodes can be then be used in conjunction with the existing nodes.
 
 ## Examples
 
-An example ETL pipeline that uses these nodes is [available](https://flowhub.org/f/c520d9da20ad7f1d). This pipeline can also be viewed in [Node-RED](https://cdn.flowhub.org/?fhid=c520d9da20ad7f1d&t=0) (static, batteries included).
+An example ETL pipeline that uses these nodes is [available](https://flowhub.org/f/c520d9da20ad7f1d). This pipeline can also be viewed in [Node-RED](https://cdn.flowhub.org/?fhid=c520d9da20ad7f1d&t=0) (static, batteries not included).
 
 ## Contributing
 
 Even though this codebase is maintained as a Node-RED [flow](https://flowhub.org/f/c620b688530123aa), contributions can be made using pull requests.
 
-If you have an idea for a streaming node, then create it using the API described above and include it in your *own* package, there is no need to have third-party streaming nodes included here. A good naming convention would be `@scope/node-red-streaming-XXXX`  but its not a requirement.
+If you have an idea for a streaming node, then create it using the API described above and include it in your *own* package, there is no need to have third-party streaming nodes included here. A good naming convention would be `@scope/node-red-streaming-XXXX` but its not a requirement.
 
 ## TODOs
 

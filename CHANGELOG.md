@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.4]
+### Name change
+
+- update to readme
+- name change from pipestream to just streaming.
+
 ## [0.0.3]
 ### Iconification
 
