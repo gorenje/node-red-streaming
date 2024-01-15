@@ -8,13 +8,14 @@
       name: {
         value:"",
       },
+      /* minify node but can be changed in the properties menu */
+      l: { value: false }
     },
 
     inputs: 1,
 
     outputs: 1,
 
-    showLabel: false,
     label: function() {
       return (this.name || this._def.paletteLabel);
     },
