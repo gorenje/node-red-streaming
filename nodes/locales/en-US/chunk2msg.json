@@ -1,0 +1,20 @@
+{
+  "chunk2msg": {
+
+
+    "label": {
+      "hello": "world"
+    },
+
+    "error": {
+
+    },
+    "tip": {
+
+    },
+    "status": {
+      "waiting": "Waiting for Godot",
+      "timeout": "No more time to waiting"
+    }
+  }
+}

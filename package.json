@@ -44,7 +44,8 @@
        "jsonlstream": "nodes/jsonlstream.js",
        "linestream": "nodes/linestream.js",
        "iconvstream": "nodes/iconvstream.js",
-       
+       "chunk2msg": "nodes/chunk2msg.js",
+
        "decompstream": "nodes/decompstream.js",
        "archivestream": "nodes/archivestream.js",
 

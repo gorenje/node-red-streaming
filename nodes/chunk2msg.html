@@ -9,9 +9,9 @@
 
   };
   
-  RED.nodes.registerType('PipeStart',{
-    color: '#e5e4ef',
-    icon: "font-awesome/fa-arrow-right",
+  RED.nodes.registerType('Chunk2Msg',{
+    color: '#FDD0A2',
+    icon: "font-awesome/fa-chevron-right",
     category: 'streaming',
     defaults: {
       name: {
@@ -23,7 +23,6 @@
 
     outputs: 1,
 
-    showLabel: false,
     label: function() {
       return (this.name || this._def.paletteLabel);
     },
@@ -53,7 +52,7 @@
 })();
 </script>
 
-<script type="text/html" data-template-name="PipeStart">
+<script type="text/html" data-template-name="Chunk2Msg">
   <div class="form-row">
     <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
     <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
