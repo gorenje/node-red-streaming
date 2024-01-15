@@ -1,6 +1,6 @@
 {
   "name" : "@gregoriusrippenstein/node-red-streaming",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "dependencies": {
     "got": "^13",
     "fs-extra": "^11.2.0",
