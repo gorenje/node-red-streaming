@@ -1,6 +1,6 @@
 module.exports = async function(RED) {
   const { got } = await import('got')
-  var querystring = require("querystring");
+  let querystring = require("querystring");
   const FormData = require('form-data');
   
   /**
