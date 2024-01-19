@@ -1,0 +1,297 @@
+[
+    {
+        "id": "ebed27073d30b510",
+        "type": "group",
+        "z": "79b13bb1bd2ae37d",
+        "name": "http request to file",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "7a974d353338446f",
+            "790a50c8021a8360",
+            "cb1a1ab2e50d8cd5",
+            "92a5d15e4791d6e4",
+            "edf91f0f8b0584b5",
+            "9fef1728dd2bdf2d",
+            "d80d2a65b046f814"
+        ],
+        "x": 70,
+        "y": 294.5,
+        "w": 1254,
+        "h": 136
+    },
+    {
+        "id": "7a974d353338446f",
+        "type": "inject",
+        "z": "79b13bb1bd2ae37d",
+        "g": "ebed27073d30b510",
+        "name": "extract",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 166,
+        "y": 371,
+        "wires": [
+            [
+                "790a50c8021a8360"
+            ]
+        ]
+    },
+    {
+        "id": "790a50c8021a8360",
+        "type": "PipeStart",
+        "z": "79b13bb1bd2ae37d",
+        "g": "ebed27073d30b510",
+        "name": "",
+        "x": 349,
+        "y": 371,
+        "wires": [
+            [
+                "9fef1728dd2bdf2d"
+            ]
+        ]
+    },
+    {
+        "id": "cb1a1ab2e50d8cd5",
+        "type": "debug",
+        "z": "79b13bb1bd2ae37d",
+        "g": "ebed27073d30b510",
+        "name": "debug 182",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "counter",
+        "x": 1201,
+        "y": 335.5,
+        "wires": []
+    },
+    {
+        "id": "92a5d15e4791d6e4",
+        "type": "PipeEnd",
+        "z": "79b13bb1bd2ae37d",
+        "g": "ebed27073d30b510",
+        "name": "",
+        "x": 998,
+        "y": 371,
+        "wires": [
+            [
+                "cb1a1ab2e50d8cd5",
+                "d80d2a65b046f814"
+            ]
+        ]
+    },
+    {
+        "id": "edf91f0f8b0584b5",
+        "type": "FileStream",
+        "z": "79b13bb1bd2ae37d",
+        "g": "ebed27073d30b510",
+        "name": "",
+        "filenameproperty": "/data/data.jsonl.bz2",
+        "filenamepropertyType": "str",
+        "direction": "write",
+        "progress": true,
+        "x": 805,
+        "y": 371,
+        "wires": [
+            [
+                "92a5d15e4791d6e4"
+            ]
+        ]
+    },
+    {
+        "id": "9fef1728dd2bdf2d",
+        "type": "HttpRequestStream",
+        "z": "79b13bb1bd2ae37d",
+        "g": "ebed27073d30b510",
+        "name": "",
+        "method": "GET",
+        "urlproperty": "https://daten.offeneregister.de/de_companies_ocdata.jsonl.bz2",
+        "urlpropertyType": "str",
+        "progress": true,
+        "ignhdrs": false,
+        "paytoqs": "ignore",
+        "headers": [],
+        "x": 572,
+        "y": 371,
+        "wires": [
+            [
+                "edf91f0f8b0584b5"
+            ]
+        ]
+    },
+    {
+        "id": "d80d2a65b046f814",
+        "type": "change",
+        "z": "79b13bb1bd2ae37d",
+        "g": "ebed27073d30b510",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "complete",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "piperesult",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1218,
+        "y": 389.5,
+        "wires": [
+            [
+                "67d2c951268b0840"
+            ]
+        ]
+    },
+    {
+        "id": "dbc572f93799ac77",
+        "type": "group",
+        "z": "79b13bb1bd2ae37d",
+        "name": "stream jsonl content",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "43644d048008c784",
+            "f34cdfe459bcebd4",
+            "65baf927bf225eee",
+            "46c8dd2b91339a5d",
+            "67d2c951268b0840",
+            "70c9dd5bd3859a6c",
+            "9829ab5080065d24"
+        ],
+        "x": 1027,
+        "y": 481,
+        "w": 611.5,
+        "h": 403
+    },
+    {
+        "id": "43644d048008c784",
+        "type": "FileStream",
+        "z": "79b13bb1bd2ae37d",
+        "g": "dbc572f93799ac77",
+        "name": "",
+        "filenameproperty": "/data/data.jsonl.bz2",
+        "filenamepropertyType": "str",
+        "direction": "read",
+        "progress": true,
+        "x": 1529,
+        "y": 583,
+        "wires": [
+            [
+                "70c9dd5bd3859a6c"
+            ]
+        ]
+    },
+    {
+        "id": "f34cdfe459bcebd4",
+        "type": "inject",
+        "z": "79b13bb1bd2ae37d",
+        "g": "dbc572f93799ac77",
+        "name": "transform",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 1133,
+        "y": 614.5,
+        "wires": [
+            [
+                "67d2c951268b0840"
+            ]
+        ]
+    },
+    {
+        "id": "65baf927bf225eee",
+        "type": "PipeEnd",
+        "z": "79b13bb1bd2ae37d",
+        "g": "dbc572f93799ac77",
+        "name": "",
+        "x": 1539,
+        "y": 782,
+        "wires": [
+            [
+                "46c8dd2b91339a5d"
+            ]
+        ]
+    },
+    {
+        "id": "46c8dd2b91339a5d",
+        "type": "debug",
+        "z": "79b13bb1bd2ae37d",
+        "g": "dbc572f93799ac77",
+        "name": "debug 183",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "counter",
+        "x": 1522.5,
+        "y": 843,
+        "wires": []
+    },
+    {
+        "id": "67d2c951268b0840",
+        "type": "PipeStart",
+        "z": "79b13bb1bd2ae37d",
+        "g": "dbc572f93799ac77",
+        "name": "",
+        "x": 1539,
+        "y": 522,
+        "wires": [
+            [
+                "43644d048008c784"
+            ]
+        ]
+    },
+    {
+        "id": "70c9dd5bd3859a6c",
+        "type": "DeCompStream",
+        "z": "79b13bb1bd2ae37d",
+        "g": "dbc572f93799ac77",
+        "name": "",
+        "direction": "decompress",
+        "format": "bz2",
+        "x": 1519,
+        "y": 660,
+        "wires": [
+            [
+                "9829ab5080065d24"
+            ]
+        ]
+    },
+    {
+        "id": "9829ab5080065d24",
+        "type": "JsonLStream",
+        "z": "79b13bb1bd2ae37d",
+        "g": "dbc572f93799ac77",
+        "name": "",
+        "x": 1529,
+        "y": 721,
+        "wires": [
+            [
+                "65baf927bf225eee"
+            ]
+        ]
+    }
+]
