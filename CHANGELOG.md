@@ -1,8 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.8]
+### Example
+
+- Added examples for using the nodes.
+
 ## [0.0.6]
-### Tpyo fxise
+### Chunk2Msg
 
 - Added the Chunk2Msg node for generate a message per chunk
 
