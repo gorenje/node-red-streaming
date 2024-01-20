@@ -1,0 +1,335 @@
+[
+    {
+        "id": "6b8c269e5143b460",
+        "type": "group",
+        "z": "79b13bb1bd2ae37d",
+        "name": "example of using Chunk2Msg node",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "310f79e5d288520e",
+            "cc0ece60f1674bc0",
+            "5e112c4f9d9e8c5b",
+            "fbeae7390c5b56e7",
+            "c2b5621ae6f16dd7",
+            "6936aaa4906e467b"
+        ],
+        "x": 87,
+        "y": 1032,
+        "w": 1437,
+        "h": 476.5
+    },
+    {
+        "id": "310f79e5d288520e",
+        "type": "inject",
+        "z": "79b13bb1bd2ae37d",
+        "g": "6b8c269e5143b460",
+        "name": "trigger",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 183,
+        "y": 1427,
+        "wires": [
+            [
+                "27921db413fa92ba"
+            ]
+        ]
+    },
+    {
+        "id": "cc0ece60f1674bc0",
+        "type": "group",
+        "z": "79b13bb1bd2ae37d",
+        "g": "6b8c269e5143b460",
+        "name": "append to file",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "9829db9dcd984fc9",
+            "da2d4ef31e856b0b",
+            "5c25d2039d6c9dd1"
+        ],
+        "x": 1074,
+        "y": 1313,
+        "w": 405,
+        "h": 169.5
+    },
+    {
+        "id": "9829db9dcd984fc9",
+        "type": "debug",
+        "z": "79b13bb1bd2ae37d",
+        "g": "cc0ece60f1674bc0",
+        "name": "debug 196",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "counter",
+        "x": 1363,
+        "y": 1354,
+        "wires": []
+    },
+    {
+        "id": "da2d4ef31e856b0b",
+        "type": "switch",
+        "z": "79b13bb1bd2ae37d",
+        "g": "cc0ece60f1674bc0",
+        "name": "",
+        "property": "complete",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "empty"
+            },
+            {
+                "t": "null"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1150,
+        "y": 1434,
+        "wires": [
+            [
+                "5c25d2039d6c9dd1"
+            ],
+            [
+                "5c25d2039d6c9dd1"
+            ],
+            [
+                "5c25d2039d6c9dd1"
+            ]
+        ]
+    },
+    {
+        "id": "5c25d2039d6c9dd1",
+        "type": "file",
+        "z": "79b13bb1bd2ae37d",
+        "g": "cc0ece60f1674bc0",
+        "name": "",
+        "filename": "/data/test.data",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 1337,
+        "y": 1434,
+        "wires": [
+            [
+                "9829db9dcd984fc9"
+            ]
+        ]
+    },
+    {
+        "id": "5e112c4f9d9e8c5b",
+        "type": "group",
+        "z": "79b13bb1bd2ae37d",
+        "g": "6b8c269e5143b460",
+        "name": "create empty file",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "381ed1203aa391a6",
+            "27921db413fa92ba"
+        ],
+        "x": 366,
+        "y": 1164,
+        "w": 255,
+        "h": 171
+    },
+    {
+        "id": "381ed1203aa391a6",
+        "type": "file",
+        "z": "79b13bb1bd2ae37d",
+        "g": "5e112c4f9d9e8c5b",
+        "name": "",
+        "filename": "/data/test.data",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 515,
+        "y": 1294,
+        "wires": [
+            [
+                "8c473cc3fb8d6972"
+            ]
+        ]
+    },
+    {
+        "id": "27921db413fa92ba",
+        "type": "change",
+        "z": "79b13bb1bd2ae37d",
+        "g": "5e112c4f9d9e8c5b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 472,
+        "y": 1205,
+        "wires": [
+            [
+                "381ed1203aa391a6"
+            ]
+        ]
+    },
+    {
+        "id": "fbeae7390c5b56e7",
+        "type": "group",
+        "z": "79b13bb1bd2ae37d",
+        "g": "6b8c269e5143b460",
+        "name": "stream and send message per chunk",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "8c473cc3fb8d6972",
+            "d38959a93db75260",
+            "769ee4ba4521827e",
+            "2714975918865e63"
+        ],
+        "x": 746,
+        "y": 1058,
+        "w": 252,
+        "h": 418
+    },
+    {
+        "id": "8c473cc3fb8d6972",
+        "type": "PipeStart",
+        "z": "79b13bb1bd2ae37d",
+        "g": "fbeae7390c5b56e7",
+        "name": "",
+        "x": 872,
+        "y": 1099,
+        "wires": [
+            [
+                "769ee4ba4521827e"
+            ]
+        ]
+    },
+    {
+        "id": "d38959a93db75260",
+        "type": "PipeEnd",
+        "z": "79b13bb1bd2ae37d",
+        "g": "fbeae7390c5b56e7",
+        "name": "",
+        "x": 872,
+        "y": 1435,
+        "wires": [
+            [
+                "da2d4ef31e856b0b",
+                "c2b5621ae6f16dd7"
+            ]
+        ]
+    },
+    {
+        "id": "769ee4ba4521827e",
+        "type": "HttpRequestStream",
+        "z": "79b13bb1bd2ae37d",
+        "g": "fbeae7390c5b56e7",
+        "name": "",
+        "method": "GET",
+        "urlproperty": "https://daten.offeneregister.de/de_companies_ocdata.jsonl.bz2",
+        "urlpropertyType": "str",
+        "progress": true,
+        "ignhdrs": true,
+        "paytoqs": "ignore",
+        "headers": [
+            {
+                "keyType": "User-Agent",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+            }
+        ],
+        "x": 872,
+        "y": 1211,
+        "wires": [
+            [
+                "2714975918865e63"
+            ]
+        ]
+    },
+    {
+        "id": "2714975918865e63",
+        "type": "Chunk2Msg",
+        "z": "79b13bb1bd2ae37d",
+        "g": "fbeae7390c5b56e7",
+        "name": "",
+        "x": 872,
+        "y": 1323,
+        "wires": [
+            [
+                "d38959a93db75260"
+            ]
+        ]
+    },
+    {
+        "id": "c2b5621ae6f16dd7",
+        "type": "switch",
+        "z": "79b13bb1bd2ae37d",
+        "g": "6b8c269e5143b460",
+        "name": "",
+        "property": "complete",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1130,
+        "y": 1225.5,
+        "wires": [
+            [
+                "6936aaa4906e467b"
+            ]
+        ]
+    },
+    {
+        "id": "6936aaa4906e467b",
+        "type": "debug",
+        "z": "79b13bb1bd2ae37d",
+        "g": "6b8c269e5143b460",
+        "name": "file write is complete",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "counter",
+        "x": 1378,
+        "y": 1225.5,
+        "wires": []
+    }
+]
