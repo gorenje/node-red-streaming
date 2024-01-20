@@ -13,8 +13,9 @@ module.exports = async function(RED) {
       */
       return parse({
         headers: cfg.hdrin,
-        delimiter: cfg.sep,
+        delimiter: (cfg.sep === "\\t" ? "\t" : cfg.sep),
         ignoreEmpty: !cfg.include_empty_strings,
+        skipRows: parseInt(cfg.skip)
       }).on('data', (d) => {
         let m = RED.util.cloneMessage(msg);
         m.payload = d
