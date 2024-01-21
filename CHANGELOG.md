@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.9]
+### CvsStream node
+
+- Better support for tab separator
+
 ## [0.0.8]
 ### Example
 

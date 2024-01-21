@@ -1,7 +1,8 @@
 module.exports = function(RED) {
 
   const stream = require('node:stream')
-  
+  const { hrtime } = require('node:process');
+
   function CoreChunk2MsgFunctionality(config) {
     RED.nodes.createNode(this,config);
 
@@ -13,8 +14,11 @@ module.exports = function(RED) {
         stream.Transform({
           transform: function (chunk, e, cb) {
             let m = RED.util.cloneMessage(msg);
+            
             m.payload = chunk
             m.encoding = e
+            m.chunkts = hrtime.bigint() 
+
             snd(m, false)
             cb();
           }
@@ -45,5 +49,4 @@ module.exports = function(RED) {
   }
 
   RED.nodes.registerType("Chunk2Msg", CoreChunk2MsgFunctionality);
-
 }
