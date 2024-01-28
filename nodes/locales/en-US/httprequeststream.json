@@ -4,6 +4,8 @@
       "ignore_header": "Ignore msg.headers",
       "showprogress": "Show Progress",
       "headers": "Request Headers",
+      "ignore_request_timeout": "Ignore request Timeout?",
+      
       "paytoqs": {
         "ignore": "Ignore",
         "body": "Post as body",

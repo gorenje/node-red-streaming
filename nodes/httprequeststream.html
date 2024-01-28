@@ -104,7 +104,8 @@
       progress: { value: true },
       ignhdrs: { value: false },
       paytoqs: { value: "ignore" },
-      headers: { value: [] }
+      headers: { value: [] },
+      ignreqtmeout: { value: false }
     },
 
     inputs: 1,
@@ -130,10 +131,12 @@
         types: ["msg","json","str"],
         typeField: "#node-input-urlpropertyType"
       });
+
       $("#node-input-urlproperty").val(this.urlproperty)
       $("#node-input-urlpropertyType").val(this.urlpropertyType) 
       $('#node-input-progress').val(this.progress)
       $('#node-input-ignhdrs').val(this.ignhdrs)
+      $('#node-input-ignreqtmeout').val(this.ignreqtmeout)
 
       if (this.paytoqs === true || this.paytoqs == "query") {
           $("#node-input-paytoqs").val("query");
@@ -270,28 +273,36 @@
     <input type="hidden" id="node-input-urlpropertyType"value="msg">
   </div>
 
+  <div class="form-row node-input-paytoqs-row">
+    <label for="node-input-paytoqs"><span data-i18n="node-red:common.label.payload"></span></label>
+    <select id="node-input-paytoqs" style="width: 70%;">
+        <option value="ignore" data-i18n="httprequeststream.label.paytoqs.ignore"></option>
+        <option value="query" data-i18n="httprequeststream.label.paytoqs.query"></option>
+        <option value="body" data-i18n="httprequeststream.label.paytoqs.body"></option>
+      </select>
+  </div>
+
   <div class="form-row">
-    <label for="node-input-progress">
+    <label for="node-input-progress" style="width: 155px;">
         <span data-i18n="httprequeststream.label.showprogress">
       </label>
     <input type="checkbox" id="node-input-progress" style="display:inline-block; width:15px; vertical-align:baseline;">
   </div>
 
   <div class="form-row">
-    <label for="node-input-ignhdrs">
+    <label for="node-input-ignhdrs" style="width: 155px;">
           <span data-i18n="httprequeststream.label.ignore_header">
         </label>
     <input type="checkbox" id="node-input-ignhdrs" style="display:inline-block; width:15px; vertical-align:baseline;">
   </div>
 
-  <div class="form-row node-input-paytoqs-row">
-    <label for="node-input-paytoqs"><span data-i18n="node-red:common.label.payload"></span></label>
-    <select id="node-input-paytoqs" style="width: 70%;">
-      <option value="ignore" data-i18n="httprequeststream.label.paytoqs.ignore"></option>
-      <option value="query" data-i18n="httprequeststream.label.paytoqs.query"></option>
-      <option value="body" data-i18n="httprequeststream.label.paytoqs.body"></option>
-    </select>
+  <div class="form-row">
+    <label for="node-input-ignreqtmeout" style="width: 155px;">
+            <span data-i18n="httprequeststream.label.ignore_request_timeout">
+          </label>
+    <input type="checkbox" id="node-input-ignreqtmeout" style="display:inline-block; width:15px; vertical-align:baseline;">
   </div>
+
 
   <div class="form-row" style="margin-bottom:0;">
      <label><i class="fa fa-list"></i> <span data-i18n="httprequeststream.label.headers"></span></label>

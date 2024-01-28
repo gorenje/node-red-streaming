@@ -88,6 +88,11 @@ module.exports = async function(RED) {
         }
       }
 
+      // somehow, somewhere a timeout kills a long and large download.
+      if (msg.noRequestTimeout || cfg.ignreqtmeout) {
+        delete reqOpts.timeout
+      }
+
       reqOpts.headers = {};
 
       //add msg.headers 
@@ -218,6 +223,11 @@ module.exports = async function(RED) {
           }
           reqOpts.body = payload;
         }
+      }
+
+      reqOpts.maxRedirects = 23;
+      if (msg.hasOwnProperty('followRedirects')) {
+        reqOpts.followRedirect = !!msg.followRedirects;
       }
 
       return got.stream(opts.url, reqOpts).on("downloadProgress", progressIndicator)
