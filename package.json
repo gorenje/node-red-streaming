@@ -26,7 +26,7 @@
   ],
 
   "license": "Don't do evil.",
-  "homepage": "https://github.com/gorenje/node-red-streaming#readme",
+  "homepage": "https://flowhub.org/f/c620b688530123aa",
   "author": "Gerrit Riessen <gerrit@openmindmap.org>",
   "engines": {
     "node": ">=14"
