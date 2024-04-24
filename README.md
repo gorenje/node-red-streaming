@@ -6,6 +6,10 @@ A set of Node-RED nodes for interacting with the [NodeJS stream API](https://nod
 
 This is not to be confused with Node-RED streaming: Node-RED is an event-driven streaming application with events being passed along wires. This streaming package aims to solve the handling *large* datasets using Node-RED.
 
+## Screencasts
+
+For an indepth explanation of these nodes, checkout the [screencasts](https://blog.openmindmap.org/blog/streaming).
+
 ## Message passing
 
 Node-RED uses `msg` objects to pass data between flows. These objects get cloned when wires split or as an object is passed out of a node. Cloning of objects in Javascript is fine *provided* the objects are small. If these objects get to big, then Node-RED suffers. Memory gets bloated and things slow down.
